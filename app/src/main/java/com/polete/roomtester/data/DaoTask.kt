@@ -1,0 +1,29 @@
+package com.polete.roomtester.data
+
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
+import kotlinx.coroutines.flow.Flow
+
+@Dao
+interface DaoTask {
+    @Insert
+    suspend fun insertTask(task: Task)
+
+    @Update
+    suspend fun updateTask(task: Task)
+
+    @Delete
+    suspend fun deleteTask(task: Task)
+
+    @Query("select * from task")
+    fun getAllTask(): Flow<List<Task>>
+
+    // Query para buscar una task concreta en base a la 'id'
+    // Es nullable pues cuando quiera borrar una task esta deberá poder tener un valor null,
+    // pues en caso contrario crashará la App
+    @Query("select * from task where id = :id")
+    fun getTaskById(id: Long): Flow<Task?>
+}
