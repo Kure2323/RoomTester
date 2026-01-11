@@ -19,7 +19,7 @@ interface DaoTask {
     @Delete
     suspend fun deleteTask(task: Task)
 
-    @Query("select * from task")
+    @Query("select * from task ORDER BY id DESC")
     fun getAllTask(): Flow<List<Task>>
 
     // Query para buscar una task concreta en base a la 'id'
