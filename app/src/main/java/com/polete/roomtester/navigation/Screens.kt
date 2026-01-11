@@ -1,6 +1,6 @@
 package com.polete.roomtester.navigation
 
-import com.polete.roomtester.data.Task
+import com.polete.roomtester.data.model.Task
 
 sealed class Screens(val route: String) {
     object mainScreen: Screens("main_screen")

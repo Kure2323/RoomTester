@@ -1,4 +1,4 @@
-package com.polete.roomtester.screens
+package com.polete.roomtester.ui.screens
 
 import android.util.Log
 import androidx.compose.foundation.lazy.LazyColumn
@@ -10,8 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.polete.roomtester.data.DaoTask
-import com.polete.roomtester.data.Task
+import com.polete.roomtester.data.model.Task
+import com.polete.roomtester.data.repository.TaskRepository
 import com.polete.roomtester.navigation.Screens
 import com.polete.roomtester.ui.AddButton
 import com.polete.roomtester.ui.AppViewDefault
@@ -21,12 +21,12 @@ import com.polete.roomtester.viewModels.TaskListViewModelFactory
 
 @Composable
 fun MainScreen(
-    taskDao: DaoTask,
+    repository: TaskRepository,
     navController: NavController
 ) {
 
     val viewModel: TaskListViewModel = viewModel(
-        factory = TaskListViewModelFactory(taskDao)
+        factory = TaskListViewModelFactory(repository)
     )
 
     val tasks by viewModel.tasks.collectAsState()

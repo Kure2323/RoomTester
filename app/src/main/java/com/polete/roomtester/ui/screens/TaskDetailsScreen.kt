@@ -1,4 +1,4 @@
-package com.polete.roomtester.screens
+package com.polete.roomtester.ui.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,8 +20,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.polete.roomtester.data.DaoTask
-import com.polete.roomtester.data.Task
+import com.polete.roomtester.data.model.Task
+import com.polete.roomtester.data.repository.TaskRepository
 import com.polete.roomtester.ui.AppViewDefault
 import com.polete.roomtester.viewModels.TaskDetailViewModel
 import com.polete.roomtester.viewModels.TaskDetailViewModelFactory
@@ -29,7 +29,7 @@ import com.polete.roomtester.viewModels.TaskDetailViewModelFactory
 @Composable
 fun TaskDetailsScreen(
     modifier: Modifier = Modifier,
-    taskDao: DaoTask,
+    repository: TaskRepository,
     navController: NavController,
     taskId: Long
 ) {
@@ -38,7 +38,7 @@ fun TaskDetailsScreen(
 
     //Creación del viewModel necesario para obtener la task en cuestión
     val viewModel: TaskDetailViewModel = viewModel(
-        factory = TaskDetailViewModelFactory(taskDao, taskId)
+        factory = TaskDetailViewModelFactory(repository, taskId)
     )
 
     val task by viewModel.task.collectAsState()

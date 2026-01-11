@@ -1,4 +1,4 @@
-package com.polete.roomtester.data
+package com.polete.roomtester.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

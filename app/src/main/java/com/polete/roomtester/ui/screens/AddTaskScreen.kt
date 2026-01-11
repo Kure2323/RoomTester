@@ -1,11 +1,11 @@
-package com.polete.roomtester.screens
+package com.polete.roomtester.ui.screens
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.polete.roomtester.data.DaoTask
+import com.polete.roomtester.data.repository.TaskRepository
 import com.polete.roomtester.viewModels.TaskListViewModel
 import com.polete.roomtester.ui.AppViewDefault
 import com.polete.roomtester.ui.FormTask
@@ -13,12 +13,12 @@ import com.polete.roomtester.viewModels.TaskListViewModelFactory
 
 @Composable
 fun AddTaskScreen(
-    taskDao: DaoTask,
+    repository: TaskRepository,
     navController: NavController,
 ) {
 
     val viewModel: TaskListViewModel = viewModel(
-        factory = TaskListViewModelFactory(taskDao)
+        factory = TaskListViewModelFactory(repository)
     )
 
     AppViewDefault(

@@ -1,10 +1,11 @@
-package com.polete.roomtester.data
+package com.polete.roomtester.data.database
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.polete.roomtester.data.model.Task
 import kotlinx.coroutines.flow.Flow
 
 @Dao
